@@ -5,10 +5,23 @@
  */
 package com.shirley;
 
+import java.net.Socket;
+
 /**
  *
  * @author Chantal Shirley
  */
 public class RequestHandler {
+    private Socket socket;
     
+    /**
+     * 
+     * @param socket 
+     */
+    public RequestHandler(Socket socket) {
+        if (null == socket) {
+            throw new IllegalArgumentException("Socket cannot be null.");
+        }
+        this.socket = socket;
+    }
 }
