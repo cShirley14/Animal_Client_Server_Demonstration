@@ -1,0 +1,5 @@
+com\shirley\animal\data\AnimalDAOXML.class
+com\shirley\animal\Animal.class
+com\shirley\animal\data\AnimalDataException.class
+com\shirley\App.class
+com\shirley\animal\data\AnimalDAO.class
