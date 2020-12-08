@@ -58,7 +58,6 @@ public class Animal implements Comparable<Animal> {
 
     public void setId(String id) {
         idValidator(id);
-        System.out.println(idList);
         idList.add(id);
         this.id = id;
     }
