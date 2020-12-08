@@ -5,13 +5,17 @@
  */
 package com.shirley;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 
 /**
  *
  * @author Chantal Shirley
  */
-public class RequestHandler {
+public class RequestHandler implements Runnable {
     private Socket socket;
     
     /**
@@ -24,4 +28,29 @@ public class RequestHandler {
         }
         this.socket = socket;
     }
+    
+    @Override
+    public void run() {
+        try(
+            DataInputStream inputStream = new DataInputStream(
+                    socket.getInputStream());
+            DataOutputStream outputStream = new DataOutputStream(
+                    socket.getOutputStream());
+        ) {
+            // code tester
+            
+            // MySQL code
+            
+            // XML code
+            
+        } catch (SocketTimeoutException ste) {
+            System.out.println("\tSocket connection timed out: " + 
+                    ste.getMessage());
+        } catch (IOException ioe) {
+            System.out.println("\tIO Error: " + ioe.getMessage());
+        } catch (Exception ex) {
+            System.out.println("\tError: " + ex.getMessage());
+        }
+    }
+    
 }

@@ -32,6 +32,9 @@ public class App {
         string animal = inputStream.readString();
         outputStream.close();
         
+        // read XML code into hashmap 
+        // convert hashmap data into readable text
+        
         */
         return animalData;
     }
