@@ -111,20 +111,20 @@ INSERT INTO animal (
 
 DELIMITER $$
 CREATE PROCEDURE sp_add_animal(
-    IN p_id                     VARCHAR(25),
-    IN p_name                   VARCHAR(150),
-    IN p_species                ENUM('Dog', 'Cat', 'Unknown'),
-    IN p_gender                 ENUM('Male', 'Female', 'Unknown'),
-    IN p_age                    SMALLINT,
-    IN p_fixed                  ENUM('Yes', 'No'),
-    IN p_legs                   INT
-    IN p_weight                 Float(8,2),
-    IN p_date_added             DATE,
-    IN p_last_feeding_time      DATETIME
+    IN p_id VARCHAR(25),
+    IN p_name VARCHAR(150),
+    IN p_species ENUM('Dog', 'Cat', 'Unknown'),
+    IN p_gender ENUM('Male', 'Female', 'Unknown'),
+    IN p_age SMALLINT,
+    IN p_fixed ENUM('Yes', 'No'),
+    IN p_legs INT UNSIGNED,
+    IN p_weight Float(8,2),
+    IN p_date_added DATE,
+    IN p_last_feeding_time DATETIME
 )
 BEGIN
     INSERT INTO animal(
-        id
+        id,
         name,
         species,
         gender,
@@ -132,8 +132,8 @@ BEGIN
         fixed,
         legs,
         weight,
-        date_added,
-        last_feeding_time
+        dateAdded,
+        lastFeedingTime
     )
     VALUES (
         p_id,
@@ -148,6 +148,6 @@ BEGIN
         p_last_feeding_time
     );
 END$$
-DELIMITER;
+DELIMITER ;
 
 select * from animal;
