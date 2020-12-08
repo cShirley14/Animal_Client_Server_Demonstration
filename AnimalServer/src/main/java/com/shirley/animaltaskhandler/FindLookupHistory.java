@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.shirley.animal.taskhandler;
+package com.shirley.animaltaskhandler;
 
 /**
  *
  * @author Chantal Shirley
  */
-public class ShowAnimalHistory {
+public class FindLookupHistory {
     
 }
