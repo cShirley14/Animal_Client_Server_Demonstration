@@ -13,7 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
@@ -22,9 +21,8 @@ import javax.swing.border.Border;
  * @author Chantal Shirley
  */
 public class FormPanel extends JPanel {
-    private JLabel title_label;
     private JLabel find_label;
-    private JTextField find_textfield;
+    private JTextField find_field;
     private JButton lookup_button;
     private JButton exit_button;
     private FormListener formListener;
@@ -40,6 +38,12 @@ public class FormPanel extends JPanel {
         Border outer_border = BorderFactory.createEmptyBorder(5,5,5,5);
         setBorder(BorderFactory.createCompoundBorder(outer_border, 
                 inner_border));
+        
+        find_label = new JLabel(messages.getString("find-animal"));
+        find_field = new JTextField(10);
+        
+        lookup_button = new JButton(messages.getString("lookup-history"));
+        exit_button = new JButton(messages.getString("exit"));
     }
     
 }
