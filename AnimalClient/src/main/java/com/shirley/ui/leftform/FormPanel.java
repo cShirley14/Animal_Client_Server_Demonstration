@@ -1,7 +1,6 @@
 package com.shirley.ui.leftform;
 
 import com.shirley.ui.Languages;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -10,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JColorChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -50,7 +48,7 @@ public class FormPanel extends JPanel {
         find_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Request XML doc from server
+                // Retrieve animal information
             }
         });
         
@@ -68,6 +66,49 @@ public class FormPanel extends JPanel {
             }
         });
         
+        layoutComponents();
     }
     
+        public void setListener(FormListener formListener) {
+        this.formListener = formListener;
+    }
+    
+    public void layoutComponents() {
+        setLayout(new GridBagLayout());
+        GridBagConstraints gc = new GridBagConstraints();
+        
+        /******** First row ********/
+        gc.weightx = 1;
+        gc.weighty = 1;
+        
+        gc.gridx = 0;
+        gc.gridy = 0;
+        gc.anchor = GridBagConstraints.LINE_END;
+        add(find_label, gc);
+        
+        gc.gridx = 1;
+        gc.gridy = 0;
+        gc.anchor = GridBagConstraints.LINE_START;
+        add(find_field, gc);
+        add(find_button);
+        
+        /******** second row ********/
+        gc.weightx = 1;
+        gc.weighty = 1;
+        
+        gc.gridx = 0;
+        gc.gridy = 2;
+        gc.anchor = GridBagConstraints.FIRST_LINE_START;
+        add(lookup_button, gc);
+        
+        /******** third row ********/
+        gc.weightx = 1;
+        gc.weighty = 1;
+        
+        gc.gridx = 1;
+        gc.gridy = 3;
+        gc.anchor = GridBagConstraints.FIRST_LINE_START;
+        add(exit_button, gc);
+    }
+        
 }
