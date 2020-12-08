@@ -122,5 +122,32 @@ CREATE PROCEDURE sp_add_animal(
     IN p_date_added             DATE,
     IN p_last_feeding_time      DATETIME
 )
+BEGIN
+    INSERT INTO animal(
+        id
+        name,
+        species,
+        gender,
+        age,
+        fixed,
+        legs,
+        weight,
+        date_added,
+        last_feeding_time
+    )
+    VALUES (
+        p_id,
+        p_name,
+        p_species,
+        p_gender,
+        p_age,
+        p_fixed,
+        p_legs,
+        p_weight,
+        p_date_added,
+        p_last_feeding_time
+    );
+END$$
+DELIMITER;
 
 select * from animal;
