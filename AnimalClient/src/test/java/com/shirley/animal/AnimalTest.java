@@ -14,16 +14,11 @@ import org.junit.jupiter.api.BeforeEach;
 public class AnimalTest {
     
     private Animal instanceEmptyConstructor;
-    private Animal instanceDogOne;
-    private Animal instanceDogTwo;
-    private Animal instanceCatOne;
-    private Animal instanceCatTwo;
     private static final String GOOD_NAME_ONE = "Aech";
     private static final String GOOD_NAME_TWO = "Buster";
     private static final String GOOD_ID_ONE = "15";
     private static final String GOOD_ID_TWO = "25";
     private static final String GOOD_ID_THREE = "150";
-    private static final String GOOD_ID_FOUR = "8681";
     private static final String BAD_ID_EXISTS = "0";
     private static final String GOOD_SPECIES_DOG = "dog";
     private static final String GOOD_SPECIES_CAT = "cat";
@@ -74,7 +69,7 @@ public class AnimalTest {
     @BeforeEach
     public void setUp() {
         instanceEmptyConstructor = new Animal();
-        
+        /*
         instanceDogOne = new Animal(GOOD_ID_ONE, GOOD_NAME_ONE, 
                 GOOD_SPECIES_DOG, GOOD_GENDER_MALE, GOOD_AGE, GOOD_FIXED_TRUE, 
                 GOOD_LEGS, GOOD_WEIGHT, GOOD_DATE_ADDED, 
@@ -94,6 +89,8 @@ public class AnimalTest {
                 GOOD_SPECIES_DOG, GOOD_GENDER_MALE, GOOD_AGE, GOOD_FIXED_TRUE, 
                 GOOD_LEGS, GOOD_WEIGHT, GOOD_DATE_ADDED, 
                 GOOD_LAST_FEEDING_TIME);
+
+        */
     }
     
     @Test
@@ -105,8 +102,8 @@ public class AnimalTest {
     
     @Test
     public void testSetIDGood() {
-        String expected = GOOD_ID_ONE;
-        instanceEmptyConstructor.setId(GOOD_ID_ONE);
+        String expected = GOOD_ID_THREE;
+        instanceEmptyConstructor.setId(GOOD_ID_THREE);
         String actual = instanceEmptyConstructor.getId();
         assertEquals(expected,actual);
     }
@@ -478,34 +475,18 @@ public class AnimalTest {
     }
     
     @Test
-    public void testCompareToGoodUnknownDog() {
-        boolean expected = false;
-        boolean actual = instanceEmptyConstructor.compareTo(
-                instanceDogOne) > 0;
-        assertEquals(expected,actual);
-    }
-    
-        @Test
-    public void testCompareToGoodDogUnknown() {
-        boolean expected = true;
-        boolean actual = instanceDogOne.compareTo(
-                instanceEmptyConstructor) > 0;
-        assertEquals(expected,actual);
-    }
-    
-    @Test
-    public void testCompareToGoodDog() {
+    public void testCompareTo() {
+        Animal instanceDogOne = new Animal(GOOD_ID_ONE, GOOD_NAME_ONE, 
+                GOOD_SPECIES_DOG, GOOD_GENDER_MALE, GOOD_AGE, GOOD_FIXED_TRUE, 
+                GOOD_LEGS, GOOD_WEIGHT, GOOD_DATE_ADDED, 
+                GOOD_LAST_FEEDING_TIME);
+        Animal instanceDogTwo = new Animal(GOOD_ID_TWO, GOOD_NAME_TWO,
+                GOOD_SPECIES_DOG,GOOD_GENDER_MALE, GOOD_AGE, GOOD_FIXED_TRUE, 
+                GOOD_LEGS, GOOD_WEIGHT, GOOD_DATE_ADDED, 
+                GOOD_LAST_FEEDING_TIME);
         boolean expected = true;
         boolean actual = instanceDogOne.compareTo(
                 instanceDogTwo) < 0;
-        assertEquals(expected,actual);
-    }
-    
-    @Test
-    public void testCompareToGoodCat() {
-        boolean expected = true;
-        boolean actual = instanceCatOne.compareTo(
-                instanceCatTwo) < 0;
         assertEquals(expected,actual);
     }
 }
