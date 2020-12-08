@@ -5,6 +5,8 @@
  */
 package com.shirley;
 
+import com.shirley.animal.Animal;
+import com.shirley.taskhandler.FindAnimal;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -17,6 +19,7 @@ import java.net.SocketTimeoutException;
  */
 public class RequestHandler implements Runnable {
     private Socket socket;
+    private FindAnimal _findAnimalManager = new FindAnimal();
     
     /**
      * 
@@ -40,7 +43,11 @@ public class RequestHandler implements Runnable {
             // code tester
             
             // MySQL code
-            
+            String id = inputStream.readUTF();
+            Animal animal = _findAnimalManager.getAnimalByAnimalId(id);
+            String animalInfo = animal.toString();
+            outputStream.writeUTF(animalInfo);
+            outputStream.flush();
             // XML code 
             
         } catch (SocketTimeoutException ste) {

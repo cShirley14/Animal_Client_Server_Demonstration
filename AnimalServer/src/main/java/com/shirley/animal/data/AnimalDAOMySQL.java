@@ -1,21 +1,23 @@
 package com.shirley.animal.data;
 
 import com.shirley.animal.Animal;
+import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
  * @author Chantal Shirley
  */
 public class AnimalDAOMySQL {
-
-    private static ArrayList<Animal> animals;
 
     private Connection buildConnection() throws SQLException {
         String databaseUrl = "localhost";
@@ -43,14 +45,38 @@ public class AnimalDAOMySQL {
             callableStatement.setString(1, id);
 
             ResultSet resultSet = callableStatement.executeQuery();
-            String species;
             String name;
+            String species;
+            String gender;
             int age;
+            String copyFixed;
+            Boolean fixed;
+            int legs;
+            BigDecimal weight;
+            LocalDate dateAdded;
+            LocalDateTime lastFeedingTime;
+            
             if(resultSet.next()){
-                species = resultSet.getString("Species");
-                name = resultSet.getString("Name");
-                age = resultSet.getInt("Age");
-                //animal = new Animal(id, species, name, age);
+                name = resultSet.getString("name");
+                species = resultSet.getString("species");
+                gender = resultSet.getString("gender");
+                age = resultSet.getInt("age");
+                copyFixed = resultSet.getString("fixed");
+                if (copyFixed.equalsIgnoreCase("Yes")) {
+                    fixed = true;
+                }
+                else {
+                    fixed = false;
+                }
+                legs = resultSet.getInt("legs");
+                weight = new BigDecimal (resultSet.getDouble("weight"));
+                dateAdded = (LocalDate) resultSet.getObject("dateAdded");
+                lastFeedingTime = (LocalDateTime)resultSet.getObject(
+                        "lastFeedingTime");
+
+                animal = new Animal(id, name, species, gender, 
+                        age, fixed, legs, weight, 
+                        dateAdded, lastFeedingTime);
             }
             callableStatement.close();
             conn.close();
