@@ -1,5 +1,6 @@
 package com.shirley.ui;
 
+import com.shirley.client.ClientConnection;
 import com.shirley.ui.leftform.FormEvent;
 import com.shirley.ui.leftform.FormListener;
 import com.shirley.ui.leftform.FormPanel;
@@ -46,8 +47,20 @@ public class MainFrame extends JFrame {
                     JOptionPane.showMessageDialog(rootPane, messages.getString(
                     "id-required"));
                 } else {
-                    String name = formEvent.getId();
+                    String id = formEvent.getId();
                     // Connect w/ server
+                    try {
+                        ClientConnection cc = new ClientConnection();
+                        String animalInformation = cc.getAnimalFromServer(id);
+                        textPanel.appendText(animalInformation);
+                    }
+                    catch (Exception ex) {
+                        JOptionPane.showMessageDialog(MainFrame.this, 
+                                    ex.getLocalizedMessage(),
+                                    messages.getString("animal-not-found"),
+                                    JOptionPane.ERROR_MESSAGE);
+                    }
+                    
                 }
             }
         });
