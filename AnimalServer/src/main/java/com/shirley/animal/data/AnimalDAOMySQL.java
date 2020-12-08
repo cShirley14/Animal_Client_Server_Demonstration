@@ -22,8 +22,8 @@ public class AnimalDAOMySQL {
         String databaseUrl = "localhost";
         String databasePort = "3306";
         String databaseName = "animal";
-        String userName = "";
-        String password = "";
+        String userName = "root";
+        String password = "root";
         String connectionString = "jdbc:mysql://" + databaseUrl + ":"
                 + databasePort + "/" + databaseName + "?"
                 + "user=" + userName + "&"
@@ -32,8 +32,8 @@ public class AnimalDAOMySQL {
         return DriverManager.getConnection(connectionString);
     }
 
-    public Animal getAnimalById(String id) throws AnimalDataException {
-        Animal animal = null;
+    public String getAnimalById(String id) throws AnimalDataException {
+        String animalData = null;
         
         // Use this code if you want to directly look the animal up from a database query
         try{
@@ -67,17 +67,25 @@ public class AnimalDAOMySQL {
                     fixed = false;
                 }
                 legs = resultSet.getInt("legs");
+                System.out.println(name + species + gender + age +
+                        fixed + legs);
                 weight = new BigDecimal (resultSet.getDouble("weight"));
-                dateAdded = Date.valueOf("dateAdded").toLocalDate();
+                System.out.println(name + species + gender + age +
+                        fixed + legs + weight);
+                
+                dateAdded = resultSet.getDate("dateAdded").toLocalDate();
+                
+                System.out.println(name + species + gender + age +
+                        fixed + legs + weight + dateAdded);
+                
                 lastFeedingTime = resultSet.getTimestamp(
                         "lastFeedingTime").toLocalDateTime();
                 
-                System.out.println(name + species + gender + age +
-                        fixed + legs + weight + dateAdded + lastFeedingTime);
-                
-                animal = new Animal(id, name, species, gender, 
-                        age, fixed, legs, weight, 
-                        dateAdded, lastFeedingTime);
+                animalData = "Name: " + name + "\nSpecies: " + species + 
+                        "\nGender: " +gender + "\nAge: " + age 
+                        + "\nFixed: " + fixed + "\nNumber of Legs:" + legs +
+                        "\nWeight: " + weight + "\nDate Added: " + dateAdded 
+                        + "\nLast Feeding Time: " + lastFeedingTime;
             }
             callableStatement.close();
             conn.close();
@@ -87,7 +95,7 @@ public class AnimalDAOMySQL {
             throw new AnimalDataException(ex);
         }
         
-        return animal;
+        return animalData;
     }
 
 }
