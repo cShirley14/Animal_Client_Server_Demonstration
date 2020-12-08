@@ -12,18 +12,18 @@ import java.util.EventObject;
  * @author Chantal Shirley
  */
 public class FormEvent extends EventObject {
-    private String animalName;
+    private String id;
     
-    public FormEvent(Object source, String animalName) {
+    public FormEvent(Object source, String id) {
         super(source);
-        this.animalName = animalName;
+        this.id = id;
     }
     
-    public String getAnimalName() {
-        return animalName;
+    public String getId() {
+        return id;
     }
     
-    public void setAnimalName(String animalName) {
-        this.animalName = animalName;
+    public void setId(String id) {
+        this.id = id;
     }
 }

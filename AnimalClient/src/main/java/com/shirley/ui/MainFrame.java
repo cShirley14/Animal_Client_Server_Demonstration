@@ -42,11 +42,11 @@ public class MainFrame extends JFrame {
         formPanel.setListener(new FormListener() {
             @Override
             public void formSubmit(FormEvent formEvent) {
-                if (formEvent.getAnimalName().isEmpty()) {
+                if (formEvent.getId().isEmpty()) {
                     JOptionPane.showMessageDialog(rootPane, messages.getString(
-                    "name-required"));
+                    "id-required"));
                 } else {
-                    String name = formEvent.getAnimalName();
+                    String name = formEvent.getId();
                     // Connect w/ server
                 }
             }

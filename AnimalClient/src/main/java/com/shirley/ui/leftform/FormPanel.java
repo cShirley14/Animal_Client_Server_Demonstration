@@ -53,9 +53,9 @@ public class FormPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Retrieve animal information
-                String animalName = find_field.getText();
+                String id = find_field.getText();
                 
-                FormEvent event = new FormEvent(this, animalName);
+                FormEvent event = new FormEvent(this, id);
                 
                 if (formListener != null) {
                     formListener.formSubmit(event);
