@@ -44,6 +44,14 @@ public class FormPanel extends JPanel {
         
         lookup_button = new JButton(messages.getString("lookup-history"));
         exit_button = new JButton(messages.getString("exit"));
+        
+        lookup_button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Request XML doc from server
+            }
+        });
+        
     }
     
 }
