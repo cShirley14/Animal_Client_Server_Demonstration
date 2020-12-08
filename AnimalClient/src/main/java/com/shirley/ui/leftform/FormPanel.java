@@ -23,6 +23,7 @@ import javax.swing.border.Border;
 public class FormPanel extends JPanel {
     private JLabel find_label;
     private JTextField find_field;
+    private JButton find_button;
     private JButton lookup_button;
     private JButton exit_button;
     private FormListener formListener;
@@ -41,11 +42,26 @@ public class FormPanel extends JPanel {
         
         find_label = new JLabel(messages.getString("find-animal"));
         find_field = new JTextField(10);
+        find_button = new JButton(messages.getString("search"));
         
         lookup_button = new JButton(messages.getString("lookup-history"));
         exit_button = new JButton(messages.getString("exit"));
         
+        find_button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Request XML doc from server
+            }
+        });
+        
         lookup_button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Request XML doc from server
+            }
+        });
+        
+        exit_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Request XML doc from server
