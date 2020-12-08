@@ -151,3 +151,26 @@ END$$
 DELIMITER ;
 
 select * from animal;
+
+CALL sp_add_animal('6485', 'Jackson', 'Dog', 'Male', 10, 'Yes', 4, 52.3, '2020-08-14', '2020-12-24 04:58:28');
+CALL sp_add_animal('3285', 'Oliver', 'Cat', 'Male', 20, 'Yes', 4, 15, '2020-10-30', '2020-12-24 17:20:14');
+CALL sp_add_animal('8494', 'Sandy', 'Dog', 'Female', 6, 'Yes', 4, 34.58, '2020-12-01', '2020-12-24 21:17:17');
+
+select * from animal;
+
+DELIMITER $$
+CREATE PROCEDURE sp_get_animal_by_id(
+    IN p_id VARCHAR(25)
+)
+BEGIN
+    SELECT *
+    FROM
+        animal
+    WHERE
+        id = p_id;
+END$$
+DELIMITER ;
+
+CALL sp_get_animal_by_id('3285');
+CALL sp_get_animal_by_id('68');
+CALL sp_get_animal_by_id('15');
