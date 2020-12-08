@@ -24,8 +24,8 @@ public class MainFrame extends JFrame {
      public MainFrame() {
         super();
         setTitle(messages.getString("title"));
-        setMinimumSize(new Dimension(800, 400));
-        setSize(1000,800);
+        setMinimumSize(new Dimension(800, 500));
+        setSize(800,500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -47,11 +47,16 @@ public class MainFrame extends JFrame {
                     "name-required"));
                 } else {
                     String name = formEvent.getAnimalName();
-                    
                     // Connect w/ server
                 }
             }
         });
+        
+        textPanel = new TextPanel();
+        add(textPanel, BorderLayout.CENTER);
+    
+        setVisible(true);
+        
      }
      
      private void closeWindow() {
