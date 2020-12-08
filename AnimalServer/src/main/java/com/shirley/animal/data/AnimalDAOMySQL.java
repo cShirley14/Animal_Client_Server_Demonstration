@@ -75,11 +75,12 @@ public class AnimalDAOMySQL {
                 lastFeedingTime = resultSet.getTimestamp(
                         "lastFeedingTime").toLocalDateTime();
                 
-                animalData = "Name: " + name + "\nSpecies: " + species + 
+                animalData = "\nName: " + name + "\nSpecies: " + species + 
                         "\nGender: " +gender + "\nAge: " + age 
                         + "\nFixed: " + fixed + "\nNumber of Legs:" + legs +
                         "\nWeight: " + weight + "\nDate Added: " + dateAdded 
-                        + "\nLast Feeding Time: " + lastFeedingTime;
+                        + "\nLast Feeding Time: " + lastFeedingTime + "\n"
+                        + "\t-------------------";
             }
             callableStatement.close();
             conn.close();
