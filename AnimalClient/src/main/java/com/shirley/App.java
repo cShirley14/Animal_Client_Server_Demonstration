@@ -1,13 +1,7 @@
 package com.shirley;
 
 import com.shirley.ui.MainFrame;
-import com.shirley.animal.Animal;
 import com.shirley.ui.Languages;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-import java.net.UnknownHostException;
 import javax.swing.SwingUtilities;
 
 /**
