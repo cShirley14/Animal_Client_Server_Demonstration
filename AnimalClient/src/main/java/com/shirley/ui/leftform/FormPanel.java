@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -49,6 +50,13 @@ public class FormPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Retrieve animal information
+                String animalName = find_field.getText();
+                
+                FormEvent event = new FormEvent(this, animalName);
+                
+                if (formListener != null) {
+                    formListener.formSubmit(event);
+                }
             }
         });
         
@@ -62,7 +70,16 @@ public class FormPanel extends JPanel {
         exit_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Request XML doc from server
+                int action = JOptionPane.showConfirmDialog(FormPanel.this, 
+                messages.getString("quit-question"),
+                messages.getString("confirm-exit"), JOptionPane.OK_CANCEL_OPTION);
+                if(action == JOptionPane.OK_OPTION){
+                    System.exit(0); // or e.getWindow().dispose();
+                }
+                else if (action == JOptionPane.CANCEL_OPTION) {
+                    // Return back to FormPanel
+                    JOptionPane.getFrameForComponent(FormPanel.this);
+                }
             }
         });
         

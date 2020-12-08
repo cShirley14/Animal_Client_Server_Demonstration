@@ -5,10 +5,25 @@
  */
 package com.shirley.ui.leftform;
 
+import java.util.EventObject;
+
 /**
  *
  * @author Chantal Shirley
  */
-public class FormEvent {
+public class FormEvent extends EventObject {
+    private String animalName;
     
+    public FormEvent(Object source, String animalName) {
+        super(source);
+        this.animalName = animalName;
+    }
+    
+    public String getAnimalName() {
+        return animalName;
+    }
+    
+    public void setAnimalName(String animalName) {
+        this.animalName = animalName;
+    }
 }

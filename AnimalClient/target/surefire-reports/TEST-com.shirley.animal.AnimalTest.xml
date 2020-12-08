@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.shirley.animal.AnimalTest" time="0.119" tests="54" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.shirley.animal.AnimalTest" time="0.192" tests="54" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.specification.version" value="11"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\chand\OneDrive\kirk\Fall_2020\JavaII\NetBeansProjects\FinalProject\JavaIIAnimalRepository_FinalProject\target\test-classes;C:\Users\chand\OneDrive\kirk\Fall_2020\JavaII\NetBeansProjects\FinalProject\JavaIIAnimalRepository_FinalProject\target\classes;C:\Users\chand\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\chand\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\chand\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\chand\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\chand\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.5.2\junit-jupiter-params-5.5.2.jar;C:\Users\chand\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\chand\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;"/>
+    <property name="java.class.path" value="C:\Users\chand\OneDrive\kirk\Fall_2020\JavaII\NetBeansProjects\FinalProject\AnimalClient\target\test-classes;C:\Users\chand\OneDrive\kirk\Fall_2020\JavaII\NetBeansProjects\FinalProject\AnimalClient\target\classes;C:\Users\chand\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\chand\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\chand\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\chand\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\chand\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.5.2\junit-jupiter-params-5.5.2.jar;C:\Users\chand\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\chand\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -17,9 +17,9 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.8\bin"/>
-    <property name="sun.java.command" value="C:\Users\chand\AppData\Local\Temp\surefire765325561480470244\surefirebooter7485563591311970746.jar C:\Users\chand\AppData\Local\Temp\surefire765325561480470244 2020-12-07T14-48-54_119-jvmRun1 surefire16530282658032366496tmp surefire_05085149457415280702tmp"/>
+    <property name="sun.java.command" value="C:\Users\chand\AppData\Local\Temp\surefire7001650298992826726\surefirebooter1636979485033527215.jar C:\Users\chand\AppData\Local\Temp\surefire7001650298992826726 2020-12-08T11-46-26_859-jvmRun1 surefire10703257728496305159tmp surefire_016719768238411634000tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\chand\OneDrive\kirk\Fall_2020\JavaII\NetBeansProjects\FinalProject\JavaIIAnimalRepository_FinalProject\target\test-classes;C:\Users\chand\OneDrive\kirk\Fall_2020\JavaII\NetBeansProjects\FinalProject\JavaIIAnimalRepository_FinalProject\target\classes;C:\Users\chand\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\chand\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\chand\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\chand\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\chand\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.5.2\junit-jupiter-params-5.5.2.jar;C:\Users\chand\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\chand\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\chand\OneDrive\kirk\Fall_2020\JavaII\NetBeansProjects\FinalProject\AnimalClient\target\test-classes;C:\Users\chand\OneDrive\kirk\Fall_2020\JavaII\NetBeansProjects\FinalProject\AnimalClient\target\classes;C:\Users\chand\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\chand\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\chand\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\chand\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\chand\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.5.2\junit-jupiter-params-5.5.2.jar;C:\Users\chand\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\chand\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\chand"/>
     <property name="user.language" value="en"/>
@@ -27,13 +27,13 @@
     <property name="java.version.date" value="2020-07-14"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-11.0.8"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\chand\OneDrive\kirk\Fall_2020\JavaII\NetBeansProjects\FinalProject\JavaIIAnimalRepository_FinalProject"/>
+    <property name="basedir" value="C:\Users\chand\OneDrive\kirk\Fall_2020\JavaII\NetBeansProjects\FinalProject\AnimalClient"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\chand\AppData\Local\Temp\surefire765325561480470244\surefirebooter7485563591311970746.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\chand\AppData\Local\Temp\surefire7001650298992826726\surefirebooter1636979485033527215.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.8+10-LTS"/>
@@ -49,7 +49,7 @@
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\chand\AppData\Local\Temp\"/>
     <property name="java.version" value="11.0.8"/>
-    <property name="user.dir" value="C:\Users\chand\OneDrive\kirk\Fall_2020\JavaII\NetBeansProjects\FinalProject\JavaIIAnimalRepository_FinalProject"/>
+    <property name="user.dir" value="C:\Users\chand\OneDrive\kirk\Fall_2020\JavaII\NetBeansProjects\FinalProject\AnimalClient"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
@@ -61,58 +61,58 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="testSetIDBadAlreadySet" classname="com.shirley.animal.AnimalTest" time="0.017"/>
+  <testcase name="testSetIDBadAlreadySet" classname="com.shirley.animal.AnimalTest" time="0.032"/>
   <testcase name="testSetFixedBadAlreadyFixedTrue" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testSetGenderGoodMale" classname="com.shirley.animal.AnimalTest" time="0.003"/>
   <testcase name="testSetGenderBadIllegalGender" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testSetFixedGoodFalse" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testSetFixedGoodFalse" classname="com.shirley.animal.AnimalTest" time="0.002"/>
   <testcase name="testSetDateAddedGood" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testSetFixedBadAlreadyFixedFalse" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testSetFixedBadAlreadyFixedFalse" classname="com.shirley.animal.AnimalTest" time="0.002"/>
   <testcase name="testGetSpecies" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testGetFixed" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testSetDateAddedBadUpperLimit" classname="com.shirley.animal.AnimalTest" time="0.002"/>
+  <testcase name="testGetFixed" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testSetDateAddedBadUpperLimit" classname="com.shirley.animal.AnimalTest" time="0.003"/>
   <testcase name="testSetGenderBadAlreadySet" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testSetWeightGoodLowerLimit" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testSetDateAddedGoodUpperLimit" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testSetLegsGood" classname="com.shirley.animal.AnimalTest" time="0"/>
+  <testcase name="testSetDateAddedGoodUpperLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testSetLegsGood" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testGetID" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testToString" classname="com.shirley.animal.AnimalTest" time="0.017"/>
-  <testcase name="testSetLegsBadLowerLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testSetSpeciesBadIllegalSpecies" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testToString" classname="com.shirley.animal.AnimalTest" time="0.032"/>
+  <testcase name="testSetLegsBadLowerLimit" classname="com.shirley.animal.AnimalTest" time="0.002"/>
+  <testcase name="testSetSpeciesBadIllegalSpecies" classname="com.shirley.animal.AnimalTest" time="0.002"/>
   <testcase name="testSetWeightBadLowerLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testCompareToGoodDogUnknown" classname="com.shirley.animal.AnimalTest" time="0"/>
+  <testcase name="testCompareToGoodDogUnknown" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testSetFixedGoodTrue" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testSetLegsGoodLowerLimit" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testGetLegs" classname="com.shirley.animal.AnimalTest" time="0"/>
+  <testcase name="testSetLegsGoodLowerLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testGetLegs" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testGetName" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testSetGenderGoodFemale" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testSetAgeGoodLowerLimit" classname="com.shirley.animal.AnimalTest" time="0"/>
+  <testcase name="testSetAgeGoodLowerLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testSetIDBadAlreadyExists" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testSetLastFeedingTimeBadLowerLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testSetLastFeedingTimeBadLowerLimit" classname="com.shirley.animal.AnimalTest" time="0.002"/>
   <testcase name="testSetWeightGoodUpperLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testSetLegsBadUpperLimit" classname="com.shirley.animal.AnimalTest" time="0.002"/>
+  <testcase name="testSetLegsBadUpperLimit" classname="com.shirley.animal.AnimalTest" time="0.003"/>
   <testcase name="testSetWeightBadUpperLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testGetDateAdded" classname="com.shirley.animal.AnimalTest" time="0"/>
+  <testcase name="testGetDateAdded" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testCompareToGoodCat" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testCompareToGoodDog" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testSetLegsGoodUpperLimit" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testSetWeightGood" classname="com.shirley.animal.AnimalTest" time="0"/>
+  <testcase name="testCompareToGoodDog" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testSetLegsGoodUpperLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testSetWeightGood" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testSetIDGood" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testSetAgeGoodUpperLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testGetLastFeedingTime" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testSetAgeBadBelowLimit" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testGetGender" classname="com.shirley.animal.AnimalTest" time="0"/>
+  <testcase name="testSetAgeBadBelowLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testGetGender" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testSetAgeBadUpperLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testCompareToGoodUnknownDog" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testSetAgeGood" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testSetLastFeedingTimeBadUpperLimit" classname="com.shirley.animal.AnimalTest" time="0.009"/>
-  <testcase name="testGetAge" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testSetDateAddedBadLowerLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testSetLastFeedingTimeGood" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testGetWeight" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testSetName" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testSetDateAddedGoodLowerLimit" classname="com.shirley.animal.AnimalTest" time="0"/>
+  <testcase name="testCompareToGoodUnknownDog" classname="com.shirley.animal.AnimalTest" time="0"/>
+  <testcase name="testSetAgeGood" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testSetLastFeedingTimeBadUpperLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testGetAge" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testSetDateAddedBadLowerLimit" classname="com.shirley.animal.AnimalTest" time="0.002"/>
+  <testcase name="testSetLastFeedingTimeGood" classname="com.shirley.animal.AnimalTest" time="0.008"/>
+  <testcase name="testGetWeight" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testSetName" classname="com.shirley.animal.AnimalTest" time="0.001"/>
+  <testcase name="testSetDateAddedGoodLowerLimit" classname="com.shirley.animal.AnimalTest" time="0.001"/>
   <testcase name="testSetSpeciesGoodCat" classname="com.shirley.animal.AnimalTest" time="0"/>
-  <testcase name="testSetSpeciesGoodDog" classname="com.shirley.animal.AnimalTest" time="0.001"/>
-  <testcase name="testSetSpeciesBadAlreadyExists" classname="com.shirley.animal.AnimalTest" time="0"/>
+  <testcase name="testSetSpeciesGoodDog" classname="com.shirley.animal.AnimalTest" time="0"/>
+  <testcase name="testSetSpeciesBadAlreadyExists" classname="com.shirley.animal.AnimalTest" time="0.001"/>
 </testsuite>
