@@ -30,15 +30,35 @@ DROP TABLE animal;
 -- create table
 CREATE TABLE animal
 (
-    id INT(25) PRIMARY KEY AUTO_INCREMENT,
-    animal_name VARCHAR(150) NOT NULL,
-    gender ENUM('Male', 'Female', 'Unknown') 
-        NOT NULL DEFAULT 'Unknown',
-    age SMALLINT UNSIGNED NOT NULL,
-    fixed ENUM('Yes', 'No') DEFAULT 'No',
-    legs INT UNSIGNED NOT NULL,
-    weight FLOAT (8,4) NOT NULL,
-    dateAdded DATE NOT NULL,
-    lastFeedingTime DATETIME
+    id                      VARCHAR(25) PRIMARY KEY,
+    animal_name             VARCHAR(150) NOT NULL,
+    gender                  ENUM('Male', 'Female', 'Unknown') NOT NULL DEFAULT 'Unknown',
+    age                     SMALLINT UNSIGNED NOT NULL,
+    fixed                   ENUM('Yes', 'No') DEFAULT 'No',
+    legs                    INT UNSIGNED NOT NULL,
+    weight                  FLOAT (8,4) NOT NULL,
+    dateAdded               DATE NOT NULL,
+    lastFeedingTime         DATETIME
 );
 
+INSERT INTO animal (
+    id
+    , animal_name
+    , gender
+    , age
+    , fixed
+    , legs
+    , weight
+    , dateAdded
+    , lastFeedingTime
+) VALUES (
+    '18'
+    , 'Aech'
+    , 'Male'
+    , 2
+    , 'Yes'
+    , 4
+    , 55
+    , '2018-12-25'
+    , '2020-12-24'
+);
