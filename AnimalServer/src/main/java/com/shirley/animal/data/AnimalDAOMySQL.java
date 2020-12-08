@@ -4,6 +4,7 @@ import com.shirley.animal.Animal;
 import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,9 +21,9 @@ public class AnimalDAOMySQL {
     private Connection buildConnection() throws SQLException {
         String databaseUrl = "localhost";
         String databasePort = "3306";
-        String databaseName = "animals";
-        String userName = "root";
-        String password = "root";
+        String databaseName = "animal";
+        String userName = "";
+        String password = "";
         String connectionString = "jdbc:mysql://" + databaseUrl + ":"
                 + databasePort + "/" + databaseName + "?"
                 + "user=" + userName + "&"
@@ -41,7 +42,7 @@ public class AnimalDAOMySQL {
             CallableStatement callableStatement
                     = conn.prepareCall("CALL sp_get_animal_by_id(?);");
             callableStatement.setString(1, id);
-
+            
             ResultSet resultSet = callableStatement.executeQuery();
             String name;
             String species;
@@ -53,7 +54,6 @@ public class AnimalDAOMySQL {
             BigDecimal weight;
             LocalDate dateAdded;
             LocalDateTime lastFeedingTime;
-            
             if(resultSet.next()){
                 name = resultSet.getString("name");
                 species = resultSet.getString("species");
@@ -68,10 +68,13 @@ public class AnimalDAOMySQL {
                 }
                 legs = resultSet.getInt("legs");
                 weight = new BigDecimal (resultSet.getDouble("weight"));
-                dateAdded = (LocalDate) resultSet.getObject("dateAdded");
-                lastFeedingTime = (LocalDateTime)resultSet.getObject(
-                        "lastFeedingTime");
-
+                dateAdded = Date.valueOf("dateAdded").toLocalDate();
+                lastFeedingTime = resultSet.getTimestamp(
+                        "lastFeedingTime").toLocalDateTime();
+                
+                System.out.println(name + species + gender + age +
+                        fixed + legs + weight + dateAdded + lastFeedingTime);
+                
                 animal = new Animal(id, name, species, gender, 
                         age, fixed, legs, weight, 
                         dateAdded, lastFeedingTime);
@@ -80,6 +83,7 @@ public class AnimalDAOMySQL {
             conn.close();
 
         } catch(SQLException ex){
+            System.out.println(ex.getMessage());
             throw new AnimalDataException(ex);
         }
         
