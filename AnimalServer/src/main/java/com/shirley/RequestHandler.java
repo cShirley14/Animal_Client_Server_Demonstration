@@ -44,10 +44,14 @@ public class RequestHandler implements Runnable {
             
             // MySQL code
             String id = inputStream.readUTF();
-            Animal animal = _findAnimalManager.getAnimalByAnimalId(id);
-            String animalInfo = animal.toString();
-            outputStream.writeUTF(animalInfo);
-            outputStream.flush();
+            String animal = _findAnimalManager.getAnimalByAnimalId(id);
+            if (animal == null) {
+                outputStream.writeUTF("The animal does not exist"
+                        + " in the database.");
+            } else {
+                outputStream.writeUTF(animal);
+                outputStream.flush();
+            }
             // XML code 
             
         } catch (SocketTimeoutException ste) {

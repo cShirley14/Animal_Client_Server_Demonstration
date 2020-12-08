@@ -67,16 +67,10 @@ public class AnimalDAOMySQL {
                     fixed = false;
                 }
                 legs = resultSet.getInt("legs");
-                System.out.println(name + species + gender + age +
-                        fixed + legs);
+
                 weight = new BigDecimal (resultSet.getDouble("weight"));
-                System.out.println(name + species + gender + age +
-                        fixed + legs + weight);
                 
                 dateAdded = resultSet.getDate("dateAdded").toLocalDate();
-                
-                System.out.println(name + species + gender + age +
-                        fixed + legs + weight + dateAdded);
                 
                 lastFeedingTime = resultSet.getTimestamp(
                         "lastFeedingTime").toLocalDateTime();
@@ -92,7 +86,7 @@ public class AnimalDAOMySQL {
 
         } catch(SQLException ex){
             System.out.println(ex.getMessage());
-            throw new AnimalDataException(ex);
+            throw new AnimalDataException(ex.getMessage());
         }
         
         return animalData;

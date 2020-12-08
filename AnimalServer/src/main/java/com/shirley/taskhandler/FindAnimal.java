@@ -14,7 +14,7 @@ import com.shirley.animal.data.AnimalDataException;
  * @author Chantal Shirley
  */
 public class FindAnimal {
-    public Animal getAnimalByAnimalId(String id) throws AnimalDataException {
+    public String getAnimalByAnimalId(String id) throws AnimalDataException {
         AnimalDAOMySQL dao = new AnimalDAOMySQL();
         return dao.getAnimalById(id);
     }
