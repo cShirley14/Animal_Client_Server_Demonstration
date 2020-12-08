@@ -23,7 +23,7 @@ import org.w3c.dom.NodeList;
  *
  * @author Chantal Shirley
  */
-public class AnimalDAOXML implements AnimalDAO {
+public class AnimalDAOXML  {
     private static final String FILE_NAME = "animals.xml";
     private static ArrayList<Animal> animals;
 
@@ -134,89 +134,9 @@ public class AnimalDAOXML implements AnimalDAO {
         }
     }
 
-    @Override
-    public void createAnimalRecord(Animal animal) throws AnimalDataException {
-        verifyAnimalList();
-        // Look to see if there is already a animal with the same id
-        // value
-        Animal checkAnimal = getAnimalById(animal.getId());
-        // If there was a matching animal, throw an exception.  The id
-        // is used as a unique identifier in this example.
-        if(null != checkAnimal){
-            throw new AnimalDataException("Ids must be unique.");
-        }
-        // No other animal has the same id, so we can add this Animal to
-        // the data store.
-        animals.add(animal);
-        saveToFile();
-    }
-
-    @Override
-    public Animal getAnimalById(String id) throws AnimalDataException {
-        verifyAnimalList();
-        Animal animalCopy = null;
-        for (Animal animal : animals) {
-            // See if the animal has a matching id
-            if(animal.getId().equals(id)){
-                // found a match, so it is the animal we want
-                animalCopy = animal;
-                // leave the loop
-                break;
-            }
-        }
-        return animalCopy;
-    }
-
-    @Override
     public ArrayList<Animal> getAllAnimals() throws AnimalDataException {
         verifyAnimalList();
         return animals;
-    }
-
-    @Override
-    public void updateAnimal(Animal original, Animal updated) throws AnimalDataException {
-        verifyAnimalList();
-        Animal foundAnimal = null;
-        for (Animal animal : animals) {
-            if(animal.equals(original)){
-                // found a match!
-                foundAnimal = animal;
-                break;
-            }
-        }
-        if(null == foundAnimal){
-            // did not find a match to the original!
-            throw new AnimalDataException("Original record not found for update.");
-        }
-        // If no error, update all but the unique identifier
-        foundAnimal.setSpecies(updated.getSpecies());
-        foundAnimal.setName(updated.getName());
-        foundAnimal.setAge(updated.getAge());
-        saveToFile();
-    }
-
-    @Override
-    public void deleteAnimal(Animal animal) throws AnimalDataException {
-        deleteAnimal(animal.getId());
-    }
-
-    @Override
-    public void deleteAnimal(String id) throws AnimalDataException {
-        verifyAnimalList();
-        Animal foundAnimal = null;
-        for (Animal animal : animals) {
-            if(animal.getId().equals(id)){
-                foundAnimal = animal;
-                break;
-            }
-        }
-        if(null == foundAnimal){
-            // did not find a match to the original!
-            throw new AnimalDataException("Record not found for delete.");
-        }
-        // If no error, update all but the unique identifier
-        animals.remove(foundAnimal);
-        saveToFile();
     }
     
 }

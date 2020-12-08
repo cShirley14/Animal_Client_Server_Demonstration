@@ -41,7 +41,7 @@ public class RequestHandler implements Runnable {
             
             // MySQL code
             
-            // XML code
+            // XML code 
             
         } catch (SocketTimeoutException ste) {
             System.out.println("\tSocket connection timed out: " + 
