@@ -10,8 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -23,8 +21,8 @@ public class AnimalDAOMySQL {
         String databaseUrl = "localhost";
         String databasePort = "3306";
         String databaseName = "animals";
-        String userName = "";
-        String password = "";
+        String userName = "root";
+        String password = "root";
         String connectionString = "jdbc:mysql://" + databaseUrl + ":"
                 + databasePort + "/" + databaseName + "?"
                 + "user=" + userName + "&"
