@@ -70,17 +70,17 @@ public class AnimalDAOXML {
         // Prepare for Animal object to be returned
         Animal animalCopy = null;
         // Fields to be held for instantiation of Animal object
-        String id;
-        String name;
-        String species;
-        String gender;
-        int age;
-        boolean fixed;
+        String id = null;
+        String name = null;
+        String species = null;
+        String gender = null;
+        int age = 0;
+        boolean fixed = false;
         int legs = 0;
-        BigDecimal weight;
+        BigDecimal weight = null;
         LocalDate dateAdded = null;
-        LocalDateTime lastFeedingTime;
-        LocalDateTime lookUpDate;
+        LocalDateTime lastFeedingTime = null;
+        LocalDateTime lookUpDate = null;
         DateTimeFormatter formatter
                         = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         // Creats a Node List based on the child nodes of the passed 
@@ -128,6 +128,12 @@ public class AnimalDAOXML {
                         String dateAddedValue = dataElement.getTextContent();
                         dateAdded = LocalDate.parse(dateAddedValue, formatter);
                         break;
+                    case "lastFeedingTime":
+                        String curLastFeedingTime = 
+                                dataElement.getTextContent();
+                        lastFeedingTime = LocalDateTime.parse(
+                                curLastFeedingTime, formatter);
+                        break;                        
                     default:
                         break;
                 }
@@ -135,7 +141,8 @@ public class AnimalDAOXML {
         }
         // Instantiate new Animal to be returned
         if (id != null) {
-            animalCopy = new Animal();
+            animalCopy = new Animal(id, name, species, gender, age,
+            fixed, legs, weight, dateAdded, lastFeedingTime);
         }
         return animalCopy;
     }
