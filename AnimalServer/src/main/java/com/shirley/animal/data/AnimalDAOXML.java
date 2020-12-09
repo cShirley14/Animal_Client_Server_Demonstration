@@ -66,6 +66,7 @@ public class AnimalDAOXML {
         }
     }
     
+    // Move to client side
     private static Animal buildAnimalFromNode(Node animalRecord) {
         // Prepare for Animal object to be returned
         Animal animalCopy = null;
@@ -201,7 +202,7 @@ public class AnimalDAOXML {
         return animals;
     }
     
-        public void createOrderRecord(Animal animalRecord) throws 
+        public void createAnimalRecord(Animal animalRecord) throws 
             AnimalDataException {
         // Verify that there are animal records to read from
         verifyAnimalList();
