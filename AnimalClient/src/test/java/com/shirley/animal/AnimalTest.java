@@ -69,28 +69,6 @@ public class AnimalTest {
     @BeforeEach
     public void setUp() {
         instanceEmptyConstructor = new Animal();
-        /*
-        instanceDogOne = new Animal(GOOD_ID_ONE, GOOD_NAME_ONE, 
-                GOOD_SPECIES_DOG, GOOD_GENDER_MALE, GOOD_AGE, GOOD_FIXED_TRUE, 
-                GOOD_LEGS, GOOD_WEIGHT, GOOD_DATE_ADDED, 
-                GOOD_LAST_FEEDING_TIME);
-        
-        instanceDogTwo = new Animal(GOOD_ID_TWO, GOOD_NAME_TWO,
-                GOOD_SPECIES_DOG,GOOD_GENDER_MALE, GOOD_AGE, GOOD_FIXED_TRUE, 
-                GOOD_LEGS, GOOD_WEIGHT, GOOD_DATE_ADDED, 
-                GOOD_LAST_FEEDING_TIME);
-        
-        instanceCatOne = new Animal(GOOD_ID_THREE, GOOD_NAME_ONE,
-                GOOD_SPECIES_DOG, GOOD_GENDER_MALE, GOOD_AGE, GOOD_FIXED_TRUE, 
-                GOOD_LEGS, GOOD_WEIGHT, GOOD_DATE_ADDED, 
-                GOOD_LAST_FEEDING_TIME);
-        
-        instanceCatTwo = new Animal(GOOD_ID_FOUR, GOOD_NAME_TWO,
-                GOOD_SPECIES_DOG, GOOD_GENDER_MALE, GOOD_AGE, GOOD_FIXED_TRUE, 
-                GOOD_LEGS, GOOD_WEIGHT, GOOD_DATE_ADDED, 
-                GOOD_LAST_FEEDING_TIME);
-
-        */
     }
     
     @Test
