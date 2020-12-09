@@ -4,7 +4,9 @@ import com.shirley.animal.Animal;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -68,9 +70,17 @@ public class AnimalDAOXML {
         // Prepare for Animal object to be returned
         Animal animalCopy = null;
         // Fields to be held for instantiation of Animal object
-        String id = null;
-        LocalDate dateAdded = null;
+        String id;
+        String name;
+        String species;
+        String gender;
+        int age;
+        boolean fixed;
         int legs = 0;
+        BigDecimal weight;
+        LocalDate dateAdded = null;
+        LocalDateTime lastFeedingTime;
+        LocalDateTime lookUpDate;
         DateTimeFormatter formatter
                         = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         // Creats a Node List based on the child nodes of the passed 
@@ -88,13 +98,35 @@ public class AnimalDAOXML {
                     case "id":
                         id = dataElement.getTextContent();
                         break;
-                    case "dateAdded":
-                        String dateAddedValue = dataElement.getTextContent();
-                        dateAdded = LocalDate.parse(dateAddedValue, formatter);
+                    case "name":
+                        name = dataElement.getTextContent();
                         break;
+                    case "species":
+                        species = dataElement.getTextContent();
+                        break;
+                    case "gender":
+                        gender = dataElement.getTextContent();
+                        break;
+                    case "age":
+                        String curAge = dataElement.getTextContent();
+                        age = Integer.parseInt(curAge);
+                        break;
+                    case "fixed":
+                        String curFixed = dataElement.getTextContent();
+                        fixed = Boolean.parseBoolean(curFixed);
+                        break;      
                     case "legs":
                         String curLegs = dataElement.getTextContent();
                         legs = Integer.parseInt(curLegs);
+                        break;
+                    case "weight":
+                        String curWeight = dataElement.getTextContent();
+                        weight = BigDecimal.valueOf(
+                                Double.parseDouble(curWeight));
+                        break;
+                    case "dateAdded":
+                        String dateAddedValue = dataElement.getTextContent();
+                        dateAdded = LocalDate.parse(dateAddedValue, formatter);
                         break;
                     default:
                         break;
