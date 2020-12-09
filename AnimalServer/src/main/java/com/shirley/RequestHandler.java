@@ -12,6 +12,11 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.json.stream.JsonParser;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -43,16 +48,33 @@ public class RequestHandler implements Runnable {
             // code tester
             
             // MySQL code
-            String id = inputStream.readUTF();
-            String animal = _findAnimalManager.getAnimalByAnimalId(id);
-            if (animal == null) {
-                outputStream.writeUTF("The animal does not exist"
-                        + " in the database.");
+            String stringRead = inputStream.readUTF();
+            if (stringRead.equalsIgnoreCase("XML Request")) {
+                // XML code 
+                
+            } 
+            else if (stringRead.contains("petId")) {
+                String id = null;
+                // Extract pet id from json array
+                JSONArray jArray = new JSONArray(stringRead);
+                id = jArray.getJSONObject(0).get("petId").toString();
+                
+                if (id != null) {
+                    // Process as a query search
+                    String animal = _findAnimalManager.getAnimalByAnimalId(id);
+                    if (animal == null) {
+                        outputStream.writeUTF("The animal does not exist"
+                                + " in the database.");
+                    } else {
+                        outputStream.writeUTF(animal);
+                        outputStream.flush();
+                    }
+                }
+                
             } else {
-                outputStream.writeUTF(animal);
-                outputStream.flush();
+                outputStream.writeUTF("Invalid Request");
+                    outputStream.flush();
             }
-            // XML code 
             
         } catch (SocketTimeoutException ste) {
             System.out.println("\tSocket connection timed out: " + 

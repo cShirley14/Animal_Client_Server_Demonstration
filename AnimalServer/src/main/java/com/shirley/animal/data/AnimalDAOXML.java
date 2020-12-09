@@ -80,7 +80,7 @@ public class AnimalDAOXML {
         BigDecimal weight = null;
         LocalDate dateAdded = null;
         LocalDateTime lastFeedingTime = null;
-        LocalDateTime lookUpDate = null;
+        LocalDateTime lookupDate = null;
         DateTimeFormatter formatter
                         = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         // Creats a Node List based on the child nodes of the passed 
@@ -133,7 +133,12 @@ public class AnimalDAOXML {
                                 dataElement.getTextContent();
                         lastFeedingTime = LocalDateTime.parse(
                                 curLastFeedingTime, formatter);
-                        break;                        
+                        break;
+                    case "lookupDate":
+                        String curLookupDate = 
+                                dataElement.getTextContent();
+                        lookupDate = LocalDateTime.parse(
+                                curLookupDate, formatter);                        
                     default:
                         break;
                 }

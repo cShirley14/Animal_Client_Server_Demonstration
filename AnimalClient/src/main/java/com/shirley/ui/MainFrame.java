@@ -1,6 +1,7 @@
 package com.shirley.ui;
 
 import com.shirley.client.ClientConnection;
+import com.shirley.jsonbuilder.JSONArrayBuilder;
 import com.shirley.ui.leftform.FormEvent;
 import com.shirley.ui.leftform.FormListener;
 import com.shirley.ui.leftform.FormPanel;
@@ -51,7 +52,12 @@ public class MainFrame extends JFrame {
                     // Connect w/ server
                     try {
                         ClientConnection cc = new ClientConnection();
-                        String animalInformation = cc.getAnimalFromServer(id);
+                        // COnstruct JSON object
+                        JSONArrayBuilder jBuilder = new JSONArrayBuilder();
+                        String jsonArray = jBuilder.JSONGenerator(id);
+                        System.out.println(jsonArray);
+                        String animalInformation = 
+                                cc.getAnimalFromServer(jsonArray);
                         textPanel.appendText(animalInformation);
                     }
                     catch (Exception ex) {
