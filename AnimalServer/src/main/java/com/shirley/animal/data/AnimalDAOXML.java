@@ -200,24 +200,106 @@ public class AnimalDAOXML {
         verifyAnimalList();
         return animals;
     }
+    
+        public void createOrderRecord(Animal animalRecord) throws 
+            AnimalDataException {
+        // Verify that there are animal records to read from
+        verifyAnimalList();
+        // Make sure that the Animal Record being created does not already exit
+        Animal checkedAnimal = getAnimalById(
+                animalRecord.getId());
+        // Throw an exception an Animal Record was actually retrieved
+        if(null != checkedAnimal) {
+            // Just add new time node?
+            throw new AnimalDataException("Animal Records must be unique.");
+        }
+        // A unique Animal Record ID has been created, and so it can be added
+        animals.add(animalRecord);
+        saveToFile();
+    }
 
+    public Animal getAnimalById(String id) 
+            throws AnimalDataException {
+        verifyAnimalList();
+        // Object which will be returned depending on the results found.
+        Animal matchedAnimalRecord = null;
+	// Attempt to retrieve an Order Record according to the passed Order #
+        for (Animal currAnimal : animals) {
+            // See if the order record matches the passed order number
+            if(currAnimal.getId().equals(id)){
+                // The Order Number is a match so set it to object to be 
+                // returned
+                matchedAnimalRecord = currAnimal;
+                // Exit loop and return found value
+                break;
+            }
+        }
+        return matchedAnimalRecord;
+    }
+    
+        
     private DocumentFragment buildAnimalFragment(Document document, 
             Animal currAnimal) {
         DocumentFragment animalFragment = 
                 document.createDocumentFragment();
+        // Single Animal 
         Element animalElement = document.createElement("animal");
-        
-        
+
+        // Id
         Element idElement = document.createElement("id");
         idElement.setTextContent(currAnimal.getId());
         animalElement.appendChild(idElement);
         
-        DateTimeFormatter formatter
-                = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        // Name
+        Element nameElement = document.createElement("name");
+        idElement.setTextContent(currAnimal.getName());
+        animalElement.appendChild(nameElement);
+        
+        // Species
+        Element speciesElement = document.createElement("species");
+        idElement.setTextContent(currAnimal.getSpecies());
+        animalElement.appendChild(speciesElement);
+        
+        // Gender
+        Element genderElement = document.createElement("gender");
+        idElement.setTextContent(currAnimal.getGender());
+        animalElement.appendChild(genderElement);
+        
+        // Age
+        Element ageElement = document.createElement("age");
+        ageElement.setTextContent(String.valueOf(currAnimal.getAge()));
+        animalElement.appendChild(ageElement);
+        
+        // Fixed
+        Element fixedElement = document.createElement("fixed");
+        idElement.setTextContent(String.valueOf(currAnimal.getFixed()));
+        animalElement.appendChild(fixedElement);
+        
+        // Legs
+        Element legsElement = document.createElement("legs");
+        idElement.setTextContent(String.valueOf(currAnimal.getLegs()));
+        animalElement.appendChild(legsElement);
+        
+        // Weight
+        Element weightElement = document.createElement("weight");
+        idElement.setTextContent(String.valueOf(currAnimal.getWeight()));
+        animalElement.appendChild(weightElement);
+        
+        // Date Added
         Element dateAddedElement = document.createElement("dateAdded");
-        dateAddedElement.setTextContent(
-                currAnimal.getDateAdded().format(formatter));
+        idElement.setTextContent(String.valueOf(currAnimal.getDateAdded()));
         animalElement.appendChild(dateAddedElement);
+        
+        // Last Feeding Time
+        Element lastFeedingTime = document.createElement("dateAdded");
+        dateAddedElement.setTextContent(String.valueOf(
+                currAnimal.getLastFeedingTime()));
+        animalElement.appendChild(lastFeedingTime);
+        
+        // Date Animal Was Viewed
+        Element dateViewedElement = document.createElement("dateViewed");
+        idElement.setTextContent(String.valueOf(LocalDateTime.now()));
+        animalElement.appendChild(dateViewedElement);
         
         animalFragment.appendChild(animalElement);
         

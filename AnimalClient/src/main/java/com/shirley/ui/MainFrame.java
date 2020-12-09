@@ -55,7 +55,7 @@ public class MainFrame extends JFrame {
                         // COnstruct JSON object
                         JSONArrayBuilder jBuilder = new JSONArrayBuilder();
                         String jsonArray = jBuilder.JSONGenerator(id);
-                        System.out.println(jsonArray);
+                        
                         String animalInformation = 
                                 cc.getAnimalFromServer(jsonArray);
                         textPanel.appendText(animalInformation);
