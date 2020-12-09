@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -209,9 +208,7 @@ public class AnimalDAOXML {
                     rootElement.appendChild(animalFragment);
                 }
             }
-            // Clear Lookup history for next time
-            //animalLookups.clear();
-            
+
             DOMSource source = new DOMSource(document);
             
             TransformerFactory transformerFactory = 
