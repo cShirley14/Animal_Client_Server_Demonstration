@@ -1,6 +1,5 @@
 package com.shirley.animal.data;
 
-import com.shirley.animal.Animal;
 import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -22,8 +21,8 @@ public class AnimalDAOMySQL {
         String databaseUrl = "localhost";
         String databasePort = "3306";
         String databaseName = "animal";
-        String userName = "";
-        String password = "";
+        String userName = "root";
+        String password = "root";
         String connectionString = "jdbc:mysql://" + databaseUrl + ":"
                 + databasePort + "/" + databaseName + "?"
                 + "user=" + userName + "&"
@@ -75,7 +74,7 @@ public class AnimalDAOMySQL {
                 lastFeedingTime = resultSet.getTimestamp(
                         "lastFeedingTime").toLocalDateTime();
                 
-                animalData = "\nName: " + name + "\nSpecies: " + species + 
+                animalData = "\nAnimal Record:\nName: " + name + "\nSpecies: " + species + 
                         "\nGender: " +gender + "\nAge: " + age 
                         + "\nFixed: " + fixed + "\nNumber of Legs:" + legs +
                         "\nWeight: " + weight + "\nDate Added: " + dateAdded 

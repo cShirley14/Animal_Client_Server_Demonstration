@@ -33,8 +33,8 @@ CREATE TABLE animal
     fixed                   ENUM('Yes', 'No') DEFAULT 'No',
     legs                    INT UNSIGNED NOT NULL,
     weight                  FLOAT (8,2) NOT NULL,
-    dateAdded               DATE NOT NULL,
-    lastFeedingTime         DATETIME
+	dateAdded               DATETIME DEFAULT NOW(),
+    lastFeedingTime         DATETIME DEFAULT NOW()
 );
 
 INSERT INTO animal (
@@ -46,8 +46,6 @@ INSERT INTO animal (
     , fixed
     , legs
     , weight
-    , dateAdded
-    , lastFeedingTime
 ) VALUES (
     '18'
     , 'Aech'
@@ -57,8 +55,6 @@ INSERT INTO animal (
     , 'Yes'
     , 4
     , 55
-    , '2018-12-25'
-    , '2020-12-24 11:30:27'
 ),
 (
     '68'
@@ -69,8 +65,6 @@ INSERT INTO animal (
     , 'Yes'
     , 4
     , 75
-    , '2016-04-05'
-    , '2020-12-24 15:24:45'
 ),
 (
     '12863'
@@ -81,8 +75,6 @@ INSERT INTO animal (
     , 'Yes'
     , 4
     , 8.5
-    , '2017-02-13'
-    , '2020-12-24 18:45:32'
 ),
 (
     '15'
@@ -93,8 +85,6 @@ INSERT INTO animal (
     , 'Yes'
     , 4
     , 17.12
-    , '2020-05-27'
-    , '2020-12-24 06:24:17'
 ),
 (
     '14'
@@ -105,8 +95,6 @@ INSERT INTO animal (
     , 'No'
     , 4
     , 5
-    , '2020-11-16'
-    , '2020-12-24 04:17:35'
 );
 
 DELIMITER $$
@@ -119,7 +107,7 @@ CREATE PROCEDURE sp_add_animal(
     IN p_fixed ENUM('Yes', 'No'),
     IN p_legs INT UNSIGNED,
     IN p_weight Float(8,2),
-    IN p_date_added DATE,
+    IN p_date_added DATETIME,
     IN p_last_feeding_time DATETIME
 )
 BEGIN
@@ -152,9 +140,9 @@ DELIMITER ;
 
 select * from animal;
 
-CALL sp_add_animal('6485', 'Jackson', 'Dog', 'Male', 10, 'Yes', 4, 52.3, '2020-08-14', '2020-12-24 04:58:28');
-CALL sp_add_animal('3285', 'Oliver', 'Cat', 'Male', 20, 'Yes', 4, 15, '2020-10-30', '2020-12-24 17:20:14');
-CALL sp_add_animal('8494', 'Sandy', 'Dog', 'Female', 6, 'Yes', 4, 34.58, '2020-12-01', '2020-12-24 21:17:17');
+CALL sp_add_animal('6485', 'Jackson', 'Dog', 'Male', 10, 'Yes', 4, 52.3, NOW(), NOW());
+CALL sp_add_animal('3285', 'Oliver', 'Cat', 'Male', 20, 'Yes', 4, 15, NOW(), NOW());
+CALL sp_add_animal('8494', 'Sandy', 'Dog', 'Female', 6, 'Yes', 4, 34.58, NOW(), NOW());
 
 select * from animal;
 
