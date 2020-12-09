@@ -1,5 +1,6 @@
 package com.shirley.animal.data;
 
+import com.shirley.animal.Animal;
 import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -16,13 +17,13 @@ import java.time.LocalDateTime;
  * @author Chantal Shirley
  */
 public class AnimalDAOMySQL {
-
+    private AnimalDAOXML daoXML = new AnimalDAOXML();
     private Connection buildConnection() throws SQLException {
         String databaseUrl = "localhost";
         String databasePort = "3306";
         String databaseName = "animal";
-        String userName = "";
-        String password = "";
+        String userName = "root";
+        String password = "root";
         String connectionString = "jdbc:mysql://" + databaseUrl + ":"
                 + databasePort + "/" + databaseName + "?"
                 + "user=" + userName + "&"
@@ -74,12 +75,14 @@ public class AnimalDAOMySQL {
                 lastFeedingTime = resultSet.getTimestamp(
                         "lastFeedingTime").toLocalDateTime();
                 
-                animalData = "\nAnimal Record:\nName: " + name + "\nSpecies: " + species + 
-                        "\nGender: " +gender + "\nAge: " + age 
+                animalData = "\nAnimal Record:\nName: " + name + "\nSpecies: " 
+                        + species + "\nGender: " +gender + "\nAge: " + age 
                         + "\nFixed: " + fixed + "\nNumber of Legs:" + legs +
                         "\nWeight: " + weight + "\nDate Added: " + dateAdded 
                         + "\nLast Feeding Time: " + lastFeedingTime + "\n"
                         + "\t-------------------";
+                daoXML.documentLookup(id, name, species, gender, age, fixed, legs,
+                        weight, dateAdded, lastFeedingTime);
             }
             callableStatement.close();
             conn.close();

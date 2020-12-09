@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -29,7 +30,8 @@ import org.w3c.dom.NodeList;
 public class AnimalDAOXML {
    
     private static final String FILE_NAME = "animal.xml";
-    private static ArrayList<Animal> animals;
+    private static ArrayList<Animal> animals = new ArrayList<Animal>();
+    private static ArrayList<Animal> animalLookups = new ArrayList<Animal>();
     
     private void readFromFile() throws AnimalDataException {
         try (InputStream inputStream = new FileInputStream(FILE_NAME)) {
@@ -81,7 +83,6 @@ public class AnimalDAOXML {
         BigDecimal weight = null;
         LocalDate dateAdded = null;
         LocalDateTime lastFeedingTime = null;
-        LocalDateTime lookupDate = null;
         DateTimeFormatter formatter
                         = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         // Creats a Node List based on the child nodes of the passed 
@@ -134,23 +135,51 @@ public class AnimalDAOXML {
                                 dataElement.getTextContent();
                         lastFeedingTime = LocalDateTime.parse(
                                 curLastFeedingTime, formatter);
-                        break;
-                    case "lookupDate":
-                        String curLookupDate = 
-                                dataElement.getTextContent();
-                        lookupDate = LocalDateTime.parse(
-                                curLookupDate, formatter);                        
+                        break;                       
                     default:
                         break;
                 }
             }
         }
         // Instantiate new Animal to be returned
-        if (id != null) {
+        boolean flag  = false;
+        if (!animals.isEmpty()) {
+            for (Animal animal : animals) {
+                if (animal.getId() == id) {
+                    flag = true;
+                }
+            }
+        }
+        
+        if (id != null && flag != true) {
             animalCopy = new Animal(id, name, species, gender, age,
             fixed, legs, weight, dateAdded, lastFeedingTime);
         }
         return animalCopy;
+    }
+    
+    public void documentLookup(String id, String name, String species, String gender,
+    int age, boolean fixed, int legs, BigDecimal weight, LocalDate dateAdded,
+    LocalDateTime lastFeedingTime) throws AnimalDataException {
+        // Check to see if animal exists already
+        boolean reachedHere = false;
+        if (animals.isEmpty()) {
+            Animal newAnimal = new Animal(id, name, species, gender, age,
+                    fixed, legs, weight, dateAdded, lastFeedingTime);
+                    createAnimalRecord(newAnimal);
+        } else {
+            for (Animal animal : animals) {
+                if (animal.getId().equals(id)) {
+                    createAnimalRecord(animal);
+                    reachedHere = true;
+                }
+            }
+            if (reachedHere == false) {
+                Animal newAnimal = new Animal(id, name, species, gender, age,
+                    fixed, legs, weight, dateAdded, lastFeedingTime);
+                    createAnimalRecord(newAnimal);
+            }
+        }
     }
     
     private void saveToFile() throws AnimalDataException {
@@ -163,11 +192,25 @@ public class AnimalDAOXML {
             Element rootElement = document.createElement("animals");
             document.appendChild(rootElement);
             
-            for (Animal currAnimal : animals) {
-                DocumentFragment animalFragment = 
-                        buildAnimalFragment(document, currAnimal);
-                rootElement.appendChild(animalFragment);
+            
+            if (!animals.isEmpty()) {
+                // New animals added that have never been looked up
+                for (Animal currAnimal : animals) {
+                    DocumentFragment animalFragment = 
+                            buildAnimalFragment(document, currAnimal);
+                    rootElement.appendChild(animalFragment);
+                }
             }
+            if (!animalLookups.isEmpty()) {
+                // Old animals with a lookup history
+                for (Animal animal : animalLookups) {
+                    DocumentFragment animalFragment = 
+                            buildAnimalFragment(document, animal);
+                    rootElement.appendChild(animalFragment);
+                }
+            }
+            // Clear Lookup history for next time
+            //animalLookups.clear();
             
             DOMSource source = new DOMSource(document);
             
@@ -186,7 +229,7 @@ public class AnimalDAOXML {
             transformer.transform(source, new StreamResult(fos));
             
         } catch (Exception ex) {
-            throw new AnimalDataException(ex);
+            throw new AnimalDataException(ex.getMessage());
         }
     }
     
@@ -202,22 +245,31 @@ public class AnimalDAOXML {
         return animals;
     }
     
+    public ArrayList<Animal> animalExists() {
+        return animals;
+    }
+    
         public void createAnimalRecord(Animal animalRecord) throws 
             AnimalDataException {
-        // Verify that there are animal records to read from
-        verifyAnimalList();
-        // Make sure that the Animal Record being created does not already exit
-        Animal checkedAnimal = getAnimalById(
-                animalRecord.getId());
-        // Throw an exception an Animal Record was actually retrieved
-        if(null != checkedAnimal) {
-            // Just add new time node?
-            throw new AnimalDataException("Animal Records must be unique.");
+            
+            // Verify that there are animal records to read from
+            verifyAnimalList();
+            // Make sure that the Animal Record being created does not already exit
+            Animal checkedAnimal = getAnimalById(
+                    animalRecord.getId());
+
+            // Throw an exception an Animal Record was actually retrieved
+            if(null != checkedAnimal) {
+                // Just add new node with different time stamp, no exception needed
+                // Duplicates can be differentiated by time stamps
+                animalLookups.add(animalRecord);
+
+            } else {
+                // A unique Animal Record ID has been created, and so it can be added
+                animals.add(animalRecord);
+            } 
+            saveToFile();
         }
-        // A unique Animal Record ID has been created, and so it can be added
-        animals.add(animalRecord);
-        saveToFile();
-    }
 
     public Animal getAnimalById(String id) 
             throws AnimalDataException {
@@ -241,6 +293,7 @@ public class AnimalDAOXML {
         
     private DocumentFragment buildAnimalFragment(Document document, 
             Animal currAnimal) {
+        System.out.println(currAnimal);
         DocumentFragment animalFragment = 
                 document.createDocumentFragment();
         // Single Animal 
@@ -253,17 +306,17 @@ public class AnimalDAOXML {
         
         // Name
         Element nameElement = document.createElement("name");
-        idElement.setTextContent(currAnimal.getName());
+        nameElement.setTextContent(currAnimal.getName());
         animalElement.appendChild(nameElement);
         
         // Species
         Element speciesElement = document.createElement("species");
-        idElement.setTextContent(currAnimal.getSpecies());
+        speciesElement.setTextContent(currAnimal.getSpecies());
         animalElement.appendChild(speciesElement);
         
         // Gender
         Element genderElement = document.createElement("gender");
-        idElement.setTextContent(currAnimal.getGender());
+        genderElement.setTextContent(currAnimal.getGender());
         animalElement.appendChild(genderElement);
         
         // Age
@@ -273,33 +326,33 @@ public class AnimalDAOXML {
         
         // Fixed
         Element fixedElement = document.createElement("fixed");
-        idElement.setTextContent(String.valueOf(currAnimal.getFixed()));
+        fixedElement.setTextContent(String.valueOf(currAnimal.getFixed()));
         animalElement.appendChild(fixedElement);
         
         // Legs
         Element legsElement = document.createElement("legs");
-        idElement.setTextContent(String.valueOf(currAnimal.getLegs()));
+        legsElement.setTextContent(String.valueOf(currAnimal.getLegs()));
         animalElement.appendChild(legsElement);
         
         // Weight
         Element weightElement = document.createElement("weight");
-        idElement.setTextContent(String.valueOf(currAnimal.getWeight()));
+        weightElement.setTextContent(String.valueOf(currAnimal.getWeight()));
         animalElement.appendChild(weightElement);
         
         // Date Added
         Element dateAddedElement = document.createElement("dateAdded");
-        idElement.setTextContent(String.valueOf(currAnimal.getDateAdded()));
+        dateAddedElement.setTextContent(String.valueOf(currAnimal.getDateAdded()));
         animalElement.appendChild(dateAddedElement);
         
         // Last Feeding Time
-        Element lastFeedingTime = document.createElement("dateAdded");
-        dateAddedElement.setTextContent(String.valueOf(
+        Element lastFeedingTimeElement = document.createElement("lastFeedingTime");
+        lastFeedingTimeElement.setTextContent(String.valueOf(
                 currAnimal.getLastFeedingTime()));
-        animalElement.appendChild(lastFeedingTime);
+        animalElement.appendChild(lastFeedingTimeElement);
         
         // Date Animal Was Viewed
         Element dateViewedElement = document.createElement("dateViewed");
-        idElement.setTextContent(String.valueOf(LocalDateTime.now()));
+        dateViewedElement.setTextContent(String.valueOf(LocalDateTime.now()));
         animalElement.appendChild(dateViewedElement);
         
         animalFragment.appendChild(animalElement);
