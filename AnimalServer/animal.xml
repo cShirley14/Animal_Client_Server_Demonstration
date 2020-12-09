@@ -11,7 +11,20 @@
         <weight>17.120000000000000994759830064140260219573974609375</weight>
         <dateAdded>2020-12-08</dateAdded>
         <lastFeedingTime>2020-12-08T14:25:29</lastFeedingTime>
-        <dateViewed>2020-12-09T14:25:47.889560200</dateViewed>
+        <dateViewed>2020-12-09T15:08:18.065773500</dateViewed>
+    </animal>
+    <animal>
+        <id>18</id>
+        <name>Aech</name>
+        <species>Dog</species>
+        <gender>Male</gender>
+        <age>2</age>
+        <fixed>true</fixed>
+        <legs>4</legs>
+        <weight>55</weight>
+        <dateAdded>2020-12-08</dateAdded>
+        <lastFeedingTime>2020-12-08T14:25:29</lastFeedingTime>
+        <dateViewed>2020-12-09T15:08:18.065773500</dateViewed>
     </animal>
     <animal>
         <id>68</id>
@@ -24,45 +37,6 @@
         <weight>75</weight>
         <dateAdded>2020-12-08</dateAdded>
         <lastFeedingTime>2020-12-08T14:25:29</lastFeedingTime>
-        <dateViewed>2020-12-09T14:25:47.889560200</dateViewed>
-    </animal>
-    <animal>
-        <id>8494</id>
-        <name>Sandy</name>
-        <species>Dog</species>
-        <gender>Female</gender>
-        <age>6</age>
-        <fixed>true</fixed>
-        <legs>4</legs>
-        <weight>34.5799999999999982946974341757595539093017578125</weight>
-        <dateAdded>2020-12-08</dateAdded>
-        <lastFeedingTime>2020-12-08T14:25:29</lastFeedingTime>
-        <dateViewed>2020-12-09T14:25:47.889560200</dateViewed>
-    </animal>
-    <animal>
-        <id>15</id>
-        <name>Totoro</name>
-        <species>Cat</species>
-        <gender>Male</gender>
-        <age>9</age>
-        <fixed>true</fixed>
-        <legs>4</legs>
-        <weight>17.120000000000000994759830064140260219573974609375</weight>
-        <dateAdded>2020-12-08</dateAdded>
-        <lastFeedingTime>2020-12-08T14:25:29</lastFeedingTime>
-        <dateViewed>2020-12-09T14:25:47.889560200</dateViewed>
-    </animal>
-    <animal>
-        <id>15</id>
-        <name>Totoro</name>
-        <species>Cat</species>
-        <gender>Male</gender>
-        <age>9</age>
-        <fixed>true</fixed>
-        <legs>4</legs>
-        <weight>17.120000000000000994759830064140260219573974609375</weight>
-        <dateAdded>2020-12-08</dateAdded>
-        <lastFeedingTime>2020-12-08T14:25:29</lastFeedingTime>
-        <dateViewed>2020-12-09T14:25:47.889560200</dateViewed>
+        <dateViewed>2020-12-09T15:08:18.065773500</dateViewed>
     </animal>
 </animals>

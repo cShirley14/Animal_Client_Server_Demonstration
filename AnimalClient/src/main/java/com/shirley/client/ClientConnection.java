@@ -42,5 +42,26 @@ public class ClientConnection {
 
         return animalData;
     }
+    
+    public static String getXMLHistoryFromServer() throws
+            UnknownHostException, IOException {
+        String XMLFile = null;
+        String request = "XML Request";
+        Socket socket = new Socket(HOST_NAME, PORT);
+        // Get info from form submit
+        
+        DataInputStream inputStream = new DataInputStream(
+                socket.getInputStream());
+        DataOutputStream outputStream = new DataOutputStream(
+        socket.getOutputStream());
+        
+        outputStream.writeUTF(request);
+        outputStream.flush();
+        XMLFile = inputStream.readUTF();
+        inputStream.close();
+        outputStream.close();
+        
+        return XMLFile;
+    }
 
 }

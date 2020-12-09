@@ -43,6 +43,21 @@ public class MainFrame extends JFrame {
         add(formPanel, BorderLayout.WEST);
         formPanel.setListener(new FormListener() {
             @Override
+            public void XMLRequest(){
+                try{
+                    ClientConnection cc = new ClientConnection();
+                        String animalHistory = 
+                                cc.getXMLHistoryFromServer();
+                    textPanel.appendText(animalHistory + "\n");
+                } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(MainFrame.this, 
+                                    messages.getString("history-not-found"),
+                                    ex.getMessage(),
+                                    JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            
+            @Override
             public void formSubmit(FormEvent formEvent) {
                 if (formEvent.getId().isEmpty()) {
                     JOptionPane.showMessageDialog(rootPane, messages.getString(
@@ -58,18 +73,19 @@ public class MainFrame extends JFrame {
                         
                         String animalInformation = 
                                 cc.getAnimalFromServer(jsonArray);
-                        textPanel.appendText(animalInformation);
+                        textPanel.appendText(animalInformation + "\n");
                     }
                     catch (Exception ex) {
                         JOptionPane.showMessageDialog(MainFrame.this, 
-                                    ex.getLocalizedMessage(),
                                     messages.getString("animal-not-found"),
+                                    ex.getMessage(),
                                     JOptionPane.ERROR_MESSAGE);
                     }
                     
                 }
             }
         });
+        
         
         textPanel = new TextPanel();
         add(textPanel, BorderLayout.CENTER);

@@ -1,9 +1,11 @@
 package com.shirley.animal.data;
 
 import com.shirley.animal.Animal;
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -31,6 +33,27 @@ public class AnimalDAOXML {
     private static final String FILE_NAME = "animal.xml";
     private static ArrayList<Animal> animals = new ArrayList<Animal>();
     private static ArrayList<Animal> animalLookups = new ArrayList<Animal>();
+    
+    public String getXMLFile() throws AnimalDataException {
+        String file = null;
+        // Derived inspiration from: https://www.tutorialspoint.com/how-to-convert-inputstream-object-to-a-string-in-java
+        try (InputStream inputStream = new FileInputStream(FILE_NAME)){
+            InputStreamReader iReader = new InputStreamReader(inputStream);
+            BufferedReader reader = new BufferedReader(iReader);
+            StringBuffer sb = new StringBuffer();
+            String ingest = null;
+            while ((ingest = reader.readLine())!= null) {
+                sb.append(ingest + "\n");
+            }
+            file = sb.toString();
+            
+            
+        } catch (Exception  ex) {
+            file = "History not found, sorry!";
+        }
+        
+        return file;
+    }
     
     private void readFromFile() throws AnimalDataException {
         try (InputStream inputStream = new FileInputStream(FILE_NAME)) {

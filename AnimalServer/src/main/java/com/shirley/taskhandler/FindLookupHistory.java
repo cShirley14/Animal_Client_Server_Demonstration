@@ -5,10 +5,19 @@
  */
 package com.shirley.taskhandler;
 
+import com.shirley.animal.data.AnimalDAOXML;
+import com.shirley.animal.data.AnimalDataException;
+
 /**
  *
  * @author Chantal Shirley
  */
 public class FindLookupHistory {
+    private AnimalDAOXML dao = new AnimalDAOXML(); 
+    public String getHistory() throws AnimalDataException {
+        String result = null;
+        result = dao.getXMLFile();
+        return result;
+    }
     
 }

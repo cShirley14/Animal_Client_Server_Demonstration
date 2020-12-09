@@ -7,6 +7,7 @@ package com.shirley;
 
 import com.shirley.animal.Animal;
 import com.shirley.taskhandler.FindAnimal;
+import com.shirley.taskhandler.FindLookupHistory;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -25,6 +26,7 @@ import org.json.JSONObject;
 public class RequestHandler implements Runnable {
     private Socket socket;
     private FindAnimal _findAnimalManager = new FindAnimal();
+    private FindLookupHistory _findHistoryManager = new FindLookupHistory();
     
     /**
      * 
@@ -51,7 +53,9 @@ public class RequestHandler implements Runnable {
             String stringRead = inputStream.readUTF();
             if (stringRead.equalsIgnoreCase("XML Request")) {
                 // XML code 
-                
+                String history = _findHistoryManager.getHistory();
+                outputStream.writeUTF(history);
+                outputStream.flush();
             } 
             else if (stringRead.contains("petId")) {
                 String id = null;

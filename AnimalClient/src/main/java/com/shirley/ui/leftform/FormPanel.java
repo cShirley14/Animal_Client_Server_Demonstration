@@ -67,6 +67,7 @@ public class FormPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Request XML doc from server
+                formListener.XMLRequest();
             }
         });
         
