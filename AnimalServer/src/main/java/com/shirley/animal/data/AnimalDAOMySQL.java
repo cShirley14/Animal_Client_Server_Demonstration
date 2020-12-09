@@ -22,8 +22,8 @@ public class AnimalDAOMySQL {
         String databaseUrl = "localhost";
         String databasePort = "3306";
         String databaseName = "animal";
-        String userName = "";
-        String password = "";
+        String userName = "root";
+        String password = "root";
         String connectionString = "jdbc:mysql://" + databaseUrl + ":"
                 + databasePort + "/" + databaseName + "?"
                 + "user=" + userName + "&"

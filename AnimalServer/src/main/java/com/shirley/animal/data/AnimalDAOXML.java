@@ -313,7 +313,6 @@ public class AnimalDAOXML {
         
     private DocumentFragment buildAnimalFragment(Document document, 
             Animal currAnimal) {
-        System.out.println(currAnimal);
         DocumentFragment animalFragment = 
                 document.createDocumentFragment();
         // Single Animal 
